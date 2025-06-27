@@ -2,7 +2,6 @@
 
 namespace Thenk0\SitemapParser\generators;
 
-use Error;
 use Thenk0\SitemapParser\exceptions\ErrorCreatingFile;
 
 interface GeneratorInterface {
