@@ -1,2 +1,4 @@
 <?php
-require_once './sitemap/SitemapGenerator.php';
+require_once './src/SitemapGenerator.php';
+
+new SitemapGenerator();

@@ -1,8 +1,19 @@
 {
-    "name": "test/testtask",
-    "description": "A short description of what your package does",
-    "require": {
-        "php": ">=8.2",
-        "another-vendor/package": "1.*"
-    }
+    "name": "vladislav/sitemapparser",
+    "description": "parses a php array into csv,json,xml sitemap",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Vladislav",
+            "email": "vladikvd@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Thenk0\\SitemapParser\\": "src/"
+        }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "require": {}
 }
