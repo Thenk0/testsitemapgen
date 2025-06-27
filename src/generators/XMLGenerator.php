@@ -24,7 +24,6 @@ class XMLGenerator extends BaseGenerator {
         foreach ($pages as $page) {
             $pagexml = $this->xml->addChild('url');
             foreach ($page as $key => $value) {
-                var_dump($key, $value);
                 $pagexml->addChild($key, $value);
             }
         }

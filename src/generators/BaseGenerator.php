@@ -4,7 +4,11 @@ namespace Thenk0\SitemapParser\generators;
 
 use Error;
 
-abstract class BaseGenerator {
+interface GeneratorInterface {
+    public function writeFile(array $pages, string $filePath);
+}
+
+abstract class BaseGenerator implements GeneratorInterface {
 
     public function writeFile(array $pages, string $filePath) {
         if (!$this->validateFolder($filePath)) {
@@ -20,7 +24,6 @@ abstract class BaseGenerator {
         $file = fopen($filePath, "w");
         if (!$file) {
             throw new Error("Error Processing Request", 1);
-            
         }
 
         $this->writeFileHeader($file, $keys);
@@ -28,7 +31,6 @@ abstract class BaseGenerator {
         $this->writeFileFooter($file);
         fclose($file);
     }
-
 
     private function validateFolder(string $folder): bool {
         return true;

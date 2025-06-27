@@ -10,7 +10,7 @@ $siteArray = [
     [
         "loc" => "https://site.ru/",
         "lastmod" => "2020-12-14",
-        "priority" => 1,
+        "priority" => 1.0,
         "changefreq" => "hourly",
     ],
     [

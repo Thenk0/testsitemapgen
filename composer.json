@@ -12,6 +12,7 @@
         "psr-4": {
             "Thenk0\\SitemapParser\\": "src/",
             "Thenk0\\SitemapParser\\enums\\": "src/enums",
+            "Thenk0\\SitemapParser\\validation\\": "src/validation",
             "Thenk0\\SitemapParser\\generators\\": "src/generators"
         }
     },
