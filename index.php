@@ -52,3 +52,5 @@ $siteArray = [
 ];
 
 new SitemapGenerator(SitemapFileType::CSV, $siteArray, './output/sitemap.csv');
+new SitemapGenerator(SitemapFileType::JSON, $siteArray, './output/sitemap.json');
+new SitemapGenerator(SitemapFileType::XML, $siteArray, './output/sitemap.xml');
