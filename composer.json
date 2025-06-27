@@ -11,7 +11,8 @@
     "autoload": {
         "psr-4": {
             "Thenk0\\SitemapParser\\": "src/",
-            "Thenk0\\SitemapParser\\enums\\": "src/enums"
+            "Thenk0\\SitemapParser\\enums\\": "src/enums",
+            "Thenk0\\SitemapParser\\generators\\": "src/generators"
         }
     },
     "prefer-stable": true,

@@ -12,14 +12,16 @@ class SitemapGenerator implements ISitemapGenerator
     function __construct(SitemapFileType $fileType, array $sitePages, string $savePath) {
         SitemapParser::parse($fileType, $sitePages, $savePath);
 
-        $this->generate();
+        $this->generate($fileType, $sitePages, $savePath);
     }
 
-    private function generate() {
-
+    private function generate(SitemapFileType $fileType, array $sitePages, string $savePath) {
+        $writer = $this->getWriter($fileType);
+        var_dump($writer);
+        $writer->writeFile($sitePages, $savePath);
     }
 
-    private function getWriter() {
-        
+    private function getWriter(SitemapFileType $fileType) {
+        return $fileType->writer();
     }
 }
