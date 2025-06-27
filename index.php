@@ -51,4 +51,4 @@ $siteArray = [
     ]
 ];
 
-new SitemapGenerator(SitemapFileType::XML, $siteArray, './sitemap.xml');
+new SitemapGenerator(SitemapFileType::CSV, $siteArray, './output/sitemap.csv');

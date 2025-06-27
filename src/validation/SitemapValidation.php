@@ -11,6 +11,7 @@ use Thenk0\SitemapParser\exceptions\ValidationConstraintException;
 use Thenk0\SitemapParser\exceptions\ValidationTypeException;
 use DateTime;
 use Thenk0\SitemapParser\exceptions\ValidationInvalidDateException;
+use Thenk0\SitemapParser\exceptions\ValidationInvalidFileExtension;
 
 interface ISitemapValidation {}
 
@@ -38,6 +39,12 @@ class SitemapValidation implements ISitemapValidation
             self::validatePage($page, $pageIndex);
             $pageIndex++;
         }
+
+        $pathInfo = pathinfo($savePath);
+        if ($pathInfo['extension'] !== $fileType->getStringExtension()) {
+            throw new ValidationInvalidFileExtension("File extension doesnt match the file type");
+        }
+        
     }
 
     private static function validatePage(array $page, int $pageIndex)

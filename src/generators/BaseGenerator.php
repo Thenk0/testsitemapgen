@@ -3,6 +3,7 @@
 namespace Thenk0\SitemapParser\generators;
 
 use Error;
+use Thenk0\SitemapParser\exceptions\ErrorCreatingFile;
 
 interface GeneratorInterface {
     public function writeFile(array $pages, string $filePath);
@@ -11,19 +12,17 @@ interface GeneratorInterface {
 abstract class BaseGenerator implements GeneratorInterface {
 
     public function writeFile(array $pages, string $filePath) {
-        if (!$this->validateFolder($filePath)) {
-            $this->createFolder();
+        $dirname = pathinfo($filePath, PATHINFO_DIRNAME);
+        if (!file_exists($dirname)) {
+            mkdir($dirname, 0755, true);
         }
 
         $firstPage = reset($pages);
-        if (!$firstPage) {
-            // error
-        }
         $keys = array_keys($firstPage);
         
         $file = fopen($filePath, "w");
         if (!$file) {
-            throw new Error("Error Processing Request", 1);
+            throw new ErrorCreatingFile("Problem with creating file, check permissions", 1);
         }
 
         $this->writeFileHeader($file, $keys);
@@ -31,12 +30,6 @@ abstract class BaseGenerator implements GeneratorInterface {
         $this->writeFileFooter($file);
         fclose($file);
     }
-
-    private function validateFolder(string $folder): bool {
-        return true;
-    }
-
-    private function createFolder() {} 
 
     protected function writeFileHeader($file, array $keys) {}
 

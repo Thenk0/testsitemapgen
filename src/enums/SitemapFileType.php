@@ -21,4 +21,12 @@ enum SitemapFileType
             SitemapFileType::XML, SitemapFileType::XML => new XMLGenerator(),
         };
     }
+
+    public function getStringExtension(): string {
+        return match($this) {
+            SitemapFileType::CSV, SitemapFileType::CSV => 'csv',
+            SitemapFileType::JSON, SitemapFileType::JSON => 'json',
+            SitemapFileType::XML, SitemapFileType::XML => 'xml',
+        };
+    }
 }
