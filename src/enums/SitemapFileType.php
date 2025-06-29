@@ -15,15 +15,16 @@ enum SitemapFileType
 
     public function writer(): BaseGenerator
     {
-        return match($this) {
+        return match ($this) {
             SitemapFileType::CSV, SitemapFileType::CSV => new CSVGenerator(),
             SitemapFileType::JSON, SitemapFileType::JSON => new JSONGenerator(),
             SitemapFileType::XML, SitemapFileType::XML => new XMLGenerator(),
         };
     }
 
-    public function getStringExtension(): string {
-        return match($this) {
+    public function getStringExtension(): string
+    {
+        return match ($this) {
             SitemapFileType::CSV, SitemapFileType::CSV => 'csv',
             SitemapFileType::JSON, SitemapFileType::JSON => 'json',
             SitemapFileType::XML, SitemapFileType::XML => 'xml',

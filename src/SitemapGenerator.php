@@ -9,18 +9,21 @@ interface ISitemapGenerator {}
 
 class SitemapGenerator implements ISitemapGenerator
 {
-    function __construct(SitemapFileType $fileType, array $sitePages, string $savePath) {
+    function __construct(SitemapFileType $fileType, array $sitePages, string $savePath)
+    {
         SitemapValidation::parse($fileType, $sitePages, $savePath);
 
         $this->generate($fileType, $sitePages, $savePath);
     }
 
-    private function generate(SitemapFileType $fileType, array $sitePages, string $savePath) {
+    private function generate(SitemapFileType $fileType, array $sitePages, string $savePath)
+    {
         $writer = $this->getWriter($fileType);
         $writer->writeFile($sitePages, $savePath);
     }
 
-    private function getWriter(SitemapFileType $fileType) {
+    private function getWriter(SitemapFileType $fileType)
+    {
         return $fileType->writer();
     }
 }

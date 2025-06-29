@@ -44,7 +44,6 @@ class SitemapValidation implements ISitemapValidation
         if ($pathInfo['extension'] !== $fileType->getStringExtension()) {
             throw new ValidationInvalidFileExtension("File extension doesnt match the file type");
         }
-        
     }
 
     private static function validatePage(array $page, int $pageIndex)
@@ -62,19 +61,18 @@ class SitemapValidation implements ISitemapValidation
         if (!filter_var($loc, FILTER_VALIDATE_URL)) throw new ValidationInvalidUrlException("Key 'loc' url is invalid on page index: $pageIndex");
 
         if (DateTime::createFromFormat('Y-m-d', $lastmod) === false) {
-            throw new ValidationInvalidDateException("Key 'lastmod' date is invalid on page index: $pageIndex");   
-        } 
+            throw new ValidationInvalidDateException("Key 'lastmod' date is invalid on page index: $pageIndex");
+        }
 
         if (!is_float($priority)) {
             throw new ValidationTypeException("Key 'priority' constraint fail on page index: $pageIndex, value must be float");
-            
         }
         if ($priority < 0.0 || $priority > 1.0) {
             throw new ValidationConstraintException("Key 'priority' constraint fail on page index: $pageIndex, value must be in range of 0.0, 1.0, value is $priority");
         }
 
         if (!in_array($changefreq, self::$changefreq)) {
-            $freq = implode(', ',self::$changefreq);
+            $freq = implode(', ', self::$changefreq);
             $freq = "[ $freq ]";
             throw new ValidationConstraintException("Key 'changefreq' value is invalid on page index: $pageIndex: Value $changefreq must be one of $freq");
         }
